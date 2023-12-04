@@ -4,10 +4,15 @@ const app = express();
 
 app.use(express.json());
 
+const errorMiddleware = require("./middleware/error")
+
 // Route imports
 const product = require("./routes/productRoute");
 
 app.use("/api/v1", product);
+
+// Middleware for error
+app.use(errorMiddleware);
 
 
 // Exporting the app
